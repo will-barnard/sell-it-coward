@@ -1,0 +1,44 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: consignment
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: consignment
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U consignment"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks: [internal]
+
+  backend:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgres://consignment:${DB_PASSWORD}@postgres:5432/consignment
+      JWT_SECRET: ${JWT_SECRET}
+      PORT: "3001"
+    expose:
+      - "3001"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks: [internal]
+
+  frontend:
+    build: ./frontend
+    expose:
+      - "80"
+    depends_on:
+      - backend
+    networks: [internal]
+
+volumes:
+  db-data:
+    name: consignment-postgres
+
+networks:
+  internal:

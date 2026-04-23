@@ -1,0 +1,14 @@
+Consignor Information:
+Name
+Street Address
+City, State, Zip
+Mobile Phone
+Email
+
+then a consignor has a list of items they are consigning:
+Item description
+List price
+low price
+sold price
+picked up
+item Id

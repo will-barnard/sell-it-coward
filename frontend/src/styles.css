@@ -1,0 +1,55 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #f7f7f5;
+  color: #222;
+}
+header {
+  background: #222;
+  color: #fff;
+  padding: 0.75rem 1rem;
+}
+nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+}
+nav a.router-link-exact-active { text-decoration: underline; }
+nav .user { margin-left: auto; opacity: 0.7; }
+nav button {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  border-radius: 3px;
+}
+main {
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+h1 { margin-top: 0; }
+input, select, button, textarea {
+  font: inherit;
+  padding: 0.5rem;
+  margin: 0.25rem 0;
+  border: 1px solid #bbb;
+  border-radius: 3px;
+}
+form input, form select { width: 100%; max-width: 400px; display: block; }
+button { cursor: pointer; background: #fff; }
+button[type=submit] { background: #222; color: #fff; border-color: #222; }
+table { width: 100%; border-collapse: collapse; margin-top: 1rem; background: #fff; }
+th, td { text-align: left; padding: 0.5rem; border-bottom: 1px solid #eee; }
+th { background: #f0f0ec; }
+.error { color: #b00; }
+.search { max-width: 400px; width: 100%; }
+fieldset { border: 1px solid #ddd; border-radius: 3px; margin: 1rem 0; padding: 1rem; }
+.row-actions button { margin-right: 0.25rem; }

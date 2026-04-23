@@ -1,0 +1,9 @@
+# Copy to docker-compose.override.yml for local development.
+# Beachhead deployments ignore this file — it is only for running the stack locally.
+services:
+  frontend:
+    ports:
+      - "8080:80"
+  postgres:
+    ports:
+      - "5432:5432"
