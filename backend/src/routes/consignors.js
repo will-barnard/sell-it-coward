@@ -27,6 +27,14 @@ router.get('/:id', async (req, res) => {
   res.json(rows[0]);
 });
 
+router.get('/:id/items', async (req, res) => {
+  const { rows } = await pool.query(
+    'SELECT * FROM items WHERE consignor_id = $1 ORDER BY id DESC',
+    [req.params.id]
+  );
+  res.json(rows);
+});
+
 router.put('/:id', async (req, res) => {
   const { name, street_address, city, state, zip, mobile_phone, email } = req.body || {};
   if (!name) return res.status(400).json({ error: 'name required' });

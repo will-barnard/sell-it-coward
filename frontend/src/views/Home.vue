@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue';
-import { useRouter } from 'vue-router';
+import { RouterLink, useRouter } from 'vue-router';
 import api from '../api';
 import { useAuth } from '../store';
 
@@ -59,7 +59,9 @@ function money(v) {
         <tr v-for="item in items" :key="item.id">
           <td>{{ item.id }}</td>
           <td>{{ item.description }}</td>
-          <td v-if="auth.isLoggedIn">{{ item.consignor_name }}</td>
+          <td v-if="auth.isLoggedIn">
+              <RouterLink :to="`/consignors/${item.consignor_id}`">{{ item.consignor_name }}</RouterLink>
+            </td>
           <td>{{ money(item.list_price) }}</td>
           <template v-if="auth.isLoggedIn">
             <td>{{ money(item.low_price) }}</td>

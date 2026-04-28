@@ -19,7 +19,7 @@ function logout() {
       </RouterLink>
       <RouterLink to="/"><i class="bi bi-box-seam"></i> Items</RouterLink>
       <template v-if="auth.isLoggedIn">
-        <RouterLink to="/items/new"><i class="bi bi-plus-lg"></i> Add Item</RouterLink>
+        <RouterLink to="/consignors"><i class="bi bi-people"></i> Consignors</RouterLink>
         <RouterLink to="/password"><i class="bi bi-key"></i> Password</RouterLink>
         <RouterLink v-if="auth.isAdmin" to="/admin"><i class="bi bi-people"></i> Admin</RouterLink>
         <span class="nav-spacer"></span>
