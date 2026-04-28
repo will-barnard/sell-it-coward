@@ -14,16 +14,21 @@ function logout() {
 <template>
   <header>
     <nav>
-      <RouterLink to="/">Items</RouterLink>
+      <RouterLink to="/" class="nav-brand">
+        <i class="bi bi-tag-fill"></i> Consignment
+      </RouterLink>
+      <RouterLink to="/"><i class="bi bi-box-seam"></i> Items</RouterLink>
       <template v-if="auth.isLoggedIn">
-        <RouterLink to="/items/new">Add Item</RouterLink>
-        <RouterLink to="/password">Change Password</RouterLink>
-        <RouterLink v-if="auth.isAdmin" to="/admin">Admin</RouterLink>
-        <span class="user">{{ auth.user.username }}{{ auth.isAdmin ? ' (admin)' : '' }}</span>
-        <button @click="logout">Log out</button>
+        <RouterLink to="/items/new"><i class="bi bi-plus-lg"></i> Add Item</RouterLink>
+        <RouterLink to="/password"><i class="bi bi-key"></i> Password</RouterLink>
+        <RouterLink v-if="auth.isAdmin" to="/admin"><i class="bi bi-people"></i> Admin</RouterLink>
+        <span class="nav-spacer"></span>
+        <span class="nav-user"><i class="bi bi-person-circle"></i> {{ auth.user.username }}{{ auth.isAdmin ? ' (admin)' : '' }}</span>
+        <button class="btn-logout" @click="logout"><i class="bi bi-box-arrow-right"></i> Log out</button>
       </template>
       <template v-else>
-        <RouterLink to="/login" class="user">Log in</RouterLink>
+        <span class="nav-spacer"></span>
+        <RouterLink to="/login"><i class="bi bi-box-arrow-in-right"></i> Log in</RouterLink>
       </template>
     </nav>
   </header>

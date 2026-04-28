@@ -32,16 +32,18 @@ async function submit() {
 </script>
 
 <template>
-  <h1>Register first admin</h1>
-  <p v-if="allowed === null">Loading…</p>
-  <p v-else-if="!allowed">
-    Registration is closed. An admin can create additional user logins from the Admin page.
-  </p>
-  <form v-else @submit.prevent="submit">
-    <p>The first registered user becomes the admin.</p>
-    <input v-model="username" placeholder="Username" autofocus autocomplete="username" />
-    <input v-model="password" type="password" placeholder="Password" autocomplete="new-password" />
-    <button type="submit">Register</button>
-    <p v-if="error" class="error">{{ error }}</p>
-  </form>
+  <div class="auth-card">
+    <h1>Register first admin</h1>
+    <p v-if="allowed === null">Loading…</p>
+    <p v-else-if="!allowed">
+      Registration is closed. An admin can create additional user logins from the Admin page.
+    </p>
+    <form v-else @submit.prevent="submit">
+      <p>The first registered user becomes the admin.</p>
+      <input v-model="username" placeholder="Username" autofocus autocomplete="username" />
+      <input v-model="password" type="password" placeholder="Password" autocomplete="new-password" />
+      <button type="submit"><i class="bi bi-person-plus"></i> Register</button>
+      <p v-if="error" class="error"><i class="bi bi-exclamation-circle"></i> {{ error }}</p>
+    </form>
+  </div>
 </template>

@@ -32,12 +32,12 @@ async function submit() {
 </script>
 
 <template>
-  <form @submit.prevent="submit">
+  <form class="auth-card" @submit.prevent="submit">
     <h1>Log in</h1>
     <input v-model="username" placeholder="Username" autofocus autocomplete="username" />
     <input v-model="password" type="password" placeholder="Password" autocomplete="current-password" />
-    <button type="submit">Log in</button>
-    <p v-if="error" class="error">{{ error }}</p>
+    <button type="submit"><i class="bi bi-box-arrow-in-right"></i> Log in</button>
+    <p v-if="error" class="error"><i class="bi bi-exclamation-circle"></i> {{ error }}</p>
     <p v-if="registrationOpen">
       No users yet — <RouterLink to="/register">register the first admin</RouterLink>.
     </p>

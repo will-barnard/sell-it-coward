@@ -25,12 +25,12 @@ async function submit() {
 </script>
 
 <template>
-  <form @submit.prevent="submit">
+  <form class="auth-card" @submit.prevent="submit">
     <h1>Change Password</h1>
     <input v-model="currentPassword" type="password" placeholder="Current password" autocomplete="current-password" />
     <input v-model="newPassword" type="password" placeholder="New password" autocomplete="new-password" />
-    <button type="submit">Change</button>
-    <p v-if="msg">{{ msg }}</p>
-    <p v-if="error" class="error">{{ error }}</p>
+    <button type="submit"><i class="bi bi-check-lg"></i> Change</button>
+    <p v-if="msg" class="msg-success"><i class="bi bi-check-circle"></i> {{ msg }}</p>
+    <p v-if="error" class="error"><i class="bi bi-exclamation-circle"></i> {{ error }}</p>
   </form>
 </template>

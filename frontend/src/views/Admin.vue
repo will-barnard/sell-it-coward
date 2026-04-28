@@ -59,7 +59,7 @@ onMounted(() => {
           <td>{{ u.is_admin ? 'Yes' : '' }}</td>
           <td>{{ new Date(u.created_at).toLocaleDateString() }}</td>
           <td>
-            <button v-if="u.id !== auth.user.id" @click="remove(u.id)">Delete</button>
+            <button class="btn-sm btn-danger" v-if="u.id !== auth.user.id" @click="remove(u.id)"><i class="bi bi-trash"></i> Delete</button>
           </td>
         </tr>
       </tbody>
@@ -70,8 +70,10 @@ onMounted(() => {
       <input v-model="username" placeholder="Username" autocomplete="off" />
       <input v-model="password" type="password" placeholder="Password" autocomplete="new-password" />
       <label><input type="checkbox" v-model="isAdminNew" /> Admin</label>
-      <button type="submit">Add</button>
-      <p v-if="error" class="error">{{ error }}</p>
+      <div class="form-actions">
+        <button type="submit"><i class="bi bi-person-plus"></i> Add User</button>
+      </div>
+      <p v-if="error" class="error"><i class="bi bi-exclamation-circle"></i> {{ error }}</p>
     </form>
   </div>
 </template>

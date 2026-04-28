@@ -105,8 +105,10 @@ async function submit() {
       <label><input type="checkbox" v-model="item.picked_up" /> Picked up</label>
     </fieldset>
 
-    <button type="submit" :disabled="saving">{{ saving ? 'Saving…' : 'Save' }}</button>
-    <button type="button" @click="router.push('/')">Cancel</button>
-    <p v-if="error" class="error">{{ error }}</p>
+    <div class="form-actions">
+      <button type="submit" :disabled="saving"><i class="bi bi-floppy"></i> {{ saving ? 'Saving…' : 'Save' }}</button>
+      <button type="button" @click="router.push('/')">Cancel</button>
+    </div>
+    <p v-if="error" class="error"><i class="bi bi-exclamation-circle"></i> {{ error }}</p>
   </form>
 </template>
