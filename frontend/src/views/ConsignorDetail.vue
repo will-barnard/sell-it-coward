@@ -76,6 +76,7 @@ function location(c) {
       <div>
         <h1>{{ consignor.name }}</h1>
         <div class="consignor-meta">
+          <span><i class="bi bi-hash"></i> Consignor #{{ consignor.id }}</span>
           <span v-if="location(consignor)"><i class="bi bi-geo-alt"></i> {{ location(consignor) }}</span>
           <span v-if="consignor.mobile_phone"><i class="bi bi-telephone"></i> {{ consignor.mobile_phone }}</span>
           <span v-if="consignor.email"><i class="bi bi-envelope"></i> {{ consignor.email }}</span>

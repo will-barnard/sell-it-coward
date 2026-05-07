@@ -24,6 +24,7 @@ onMounted(async () => {
     <table>
       <thead>
         <tr>
+          <th>ID</th>
           <th>Name</th>
           <th>Location</th>
           <th>Phone</th>
@@ -32,6 +33,7 @@ onMounted(async () => {
       </thead>
       <tbody>
         <tr v-for="c in consignors" :key="c.id">
+          <td>{{ c.id }}</td>
           <td><RouterLink :to="`/consignors/${c.id}`">{{ c.name }}</RouterLink></td>
           <td>{{ [c.city, c.state].filter(Boolean).join(', ') || '—' }}</td>
           <td>{{ c.mobile_phone || '—' }}</td>
