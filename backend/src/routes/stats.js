@@ -11,7 +11,7 @@ router.get('/', authRequired, async (_req, res) => {
       COALESCE(SUM(list_price), 0)                          AS total_consigned_value,
       COUNT(*) FILTER (WHERE sold_price IS NOT NULL)::int   AS total_sold,
       COALESCE(SUM(sold_price) FILTER (WHERE sold_price IS NOT NULL), 0) AS total_sold_value,
-      COALESCE(SUM(fee)        FILTER (WHERE sold_price IS NOT NULL), 0) AS total_fees_collected
+      COALESCE(SUM(fee), 0)                                 AS total_fees_collected
     FROM items
   `);
   res.json(rows[0]);

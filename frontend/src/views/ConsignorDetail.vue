@@ -41,14 +41,10 @@ onMounted(load);
 const totalSold = computed(() =>
   items.value.reduce((s, i) => s + (i.sold_price != null ? Number(i.sold_price) : 0), 0)
 );
-const totalFees = computed(() =>
-  items.value.reduce((s, i) => s + (i.sold_price != null ? Number(i.fee) : 0), 0)
-);
-const netDue = computed(() => totalSold.value - totalFees.value);
 const totalPaidOut = computed(() =>
   payouts.value.reduce((s, p) => s + Number(p.amount), 0)
 );
-const balance = computed(() => netDue.value - totalPaidOut.value);
+const balance = computed(() => totalSold.value - totalPaidOut.value);
 
 async function deleteConsignor() {
   const count = items.value.length;
@@ -142,14 +138,6 @@ function location(c) {
       <div class="summary-stat">
         <span class="summary-label">Total Sold</span>
         <span class="summary-value">{{ money(totalSold) }}</span>
-      </div>
-      <div class="summary-stat">
-        <span class="summary-label">Fees</span>
-        <span class="summary-value">− {{ money(totalFees) }}</span>
-      </div>
-      <div class="summary-stat summary-stat--net">
-        <span class="summary-label">Net Due</span>
-        <span class="summary-value">{{ money(netDue) }}</span>
       </div>
       <div class="summary-stat">
         <span class="summary-label">Paid Out</span>
