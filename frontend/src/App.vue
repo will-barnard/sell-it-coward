@@ -18,6 +18,7 @@ function logout() {
         <i class="bi bi-tag-fill"></i> Consignment
       </RouterLink>
       <RouterLink to="/"><i class="bi bi-box-seam"></i> Items</RouterLink>
+      <RouterLink to="/reference"><i class="bi bi-book"></i> Reference</RouterLink>
       <template v-if="auth.isLoggedIn">
         <RouterLink to="/consignors"><i class="bi bi-people"></i> Consignors</RouterLink>
         <RouterLink to="/stats"><i class="bi bi-bar-chart-line"></i> Stats</RouterLink>

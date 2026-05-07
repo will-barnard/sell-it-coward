@@ -6,12 +6,14 @@ import ItemForm from './views/ItemForm.vue';
 import Admin from './views/Admin.vue';
 import ChangePassword from './views/ChangePassword.vue';
 import Stats from './views/Stats.vue';
+import Reference from './views/Reference.vue';
 import ConsignorList from './views/ConsignorList.vue';
 import ConsignorForm from './views/ConsignorForm.vue';
 import ConsignorDetail from './views/ConsignorDetail.vue';
 
 const routes = [
   { path: '/', component: Home },
+  { path: '/reference', component: Reference },
   { path: '/login', component: Login },
   { path: '/register', component: Register },
   { path: '/consignors', component: ConsignorList },
