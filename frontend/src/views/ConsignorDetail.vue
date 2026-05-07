@@ -164,7 +164,9 @@ function location(c) {
           <input v-model="newItem.description" placeholder="Description" required style="flex:3" />
           <input v-model.number="newItem.list_price" type="number" step="0.01" placeholder="List $" />
           <input v-model.number="newItem.low_price" type="number" step="0.01" placeholder="Low $" />
-          <input v-model.number="newItem.sold_price" type="number" step="0.01" placeholder="Sold $" />
+          <input type="number" step="0.01" placeholder="Sold $"
+            :value="newItem.sold_price ?? ''"
+            @input="newItem.sold_price = $event.target.value === '' ? null : Number($event.target.value)" />
           <label><input type="checkbox" v-model="newItem.picked_up" /> Picked up</label>
           <FeeInput v-model="newItem.fee" />
         </div>

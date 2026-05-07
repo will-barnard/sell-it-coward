@@ -58,7 +58,9 @@ async function submit() {
       <input v-model="item.description" placeholder="Description" required />
       <input v-model.number="item.list_price" type="number" step="0.01" placeholder="List Price" />
       <input v-model.number="item.low_price" type="number" step="0.01" placeholder="Low Price" />
-      <input v-model.number="item.sold_price" type="number" step="0.01" placeholder="Sold Price" />
+      <input type="number" step="0.01" placeholder="Sold Price"
+        :value="item.sold_price ?? ''"
+        @input="item.sold_price = $event.target.value === '' ? null : Number($event.target.value)" />
       <label><input type="checkbox" v-model="item.picked_up" /> Picked up</label>
       <div style="margin:0.5rem 0 0.25rem">
         <label style="display:block;font-size:0.85rem;margin-bottom:0.3rem">Fee</label>
