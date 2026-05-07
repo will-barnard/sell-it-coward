@@ -5,6 +5,7 @@ import Register from './views/Register.vue';
 import ItemForm from './views/ItemForm.vue';
 import Admin from './views/Admin.vue';
 import ChangePassword from './views/ChangePassword.vue';
+import Stats from './views/Stats.vue';
 import ConsignorList from './views/ConsignorList.vue';
 import ConsignorForm from './views/ConsignorForm.vue';
 import ConsignorDetail from './views/ConsignorDetail.vue';
@@ -20,6 +21,7 @@ const routes = [
   { path: '/items/:id/edit', component: ItemForm, props: true },
   { path: '/admin', component: Admin },
   { path: '/password', component: ChangePassword },
+  { path: '/stats', component: Stats },
 ];
 
 export default createRouter({

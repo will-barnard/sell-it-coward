@@ -10,6 +10,7 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/consignors', require('./routes/consignors'));
 app.use('/api/items', require('./routes/items'));
+app.use('/api/stats', require('./routes/stats'));
 
 app.use((err, req, res, _next) => {
   console.error(err);

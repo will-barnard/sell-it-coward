@@ -34,6 +34,16 @@ async function migrate() {
       picked_up BOOLEAN NOT NULL DEFAULT false,
       created_at TIMESTAMPTZ NOT NULL DEFAULT now()
     );
+
+    ALTER TABLE items ADD COLUMN IF NOT EXISTS fee NUMERIC(10, 2) NOT NULL DEFAULT 5.00;
+
+    CREATE TABLE IF NOT EXISTS payouts (
+      id SERIAL PRIMARY KEY,
+      consignor_id INTEGER NOT NULL REFERENCES consignors(id) ON DELETE CASCADE,
+      amount NUMERIC(10, 2) NOT NULL,
+      note TEXT,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+    );
   `);
 }
 

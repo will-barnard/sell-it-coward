@@ -2,6 +2,7 @@
 import { ref, onMounted, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import api from '../api';
+import FeeInput from '../components/FeeInput.vue';
 
 const props = defineProps({ id: String });
 const router = useRouter();
@@ -21,7 +22,7 @@ const consignor = ref({
 const items = ref([emptyItem()]);
 
 function emptyItem() {
-  return { description: '', list_price: null, low_price: null, sold_price: null, picked_up: false };
+  return { description: '', list_price: null, low_price: null, sold_price: null, picked_up: false, fee: 5 };
 }
 function addItemRow() { items.value.push(emptyItem()); }
 function removeItemRow(i) { items.value.splice(i, 1); }
@@ -106,6 +107,7 @@ async function submit() {
               <th>Low $</th>
               <th>Sold $</th>
               <th style="text-align:center">Picked Up</th>
+              <th>Fee</th>
               <th></th>
             </tr>
           </thead>
@@ -116,6 +118,7 @@ async function submit() {
               <td><input v-model.number="item.low_price" type="number" step="0.01" placeholder="0.00" /></td>
               <td><input v-model.number="item.sold_price" type="number" step="0.01" placeholder="0.00" /></td>
               <td style="text-align:center"><input type="checkbox" v-model="item.picked_up" /></td>
+              <td><FeeInput v-model="item.fee" /></td>
               <td>
                 <button type="button" class="btn-sm btn-danger" v-if="items.length > 1"
                   @click="removeItemRow(i)" title="Remove row">

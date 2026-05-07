@@ -48,4 +48,29 @@ router.put('/:id', async (req, res) => {
   res.json(upd.rows[0]);
 });
 
+router.delete('/:id', async (req, res) => {
+  await pool.query('DELETE FROM consignors WHERE id = $1', [req.params.id]);
+  res.json({ ok: true });
+});
+
+router.get('/:id/payouts', async (req, res) => {
+  const { rows } = await pool.query(
+    'SELECT * FROM payouts WHERE consignor_id = $1 ORDER BY created_at DESC',
+    [req.params.id]
+  );
+  res.json(rows);
+});
+
+router.post('/:id/payouts', async (req, res) => {
+  const { amount, note } = req.body || {};
+  if (!amount || isNaN(Number(amount)) || Number(amount) <= 0) {
+    return res.status(400).json({ error: 'positive amount required' });
+  }
+  const ins = await pool.query(
+    'INSERT INTO payouts (consignor_id, amount, note) VALUES ($1, $2, $3) RETURNING *',
+    [req.params.id, amount, note || null]
+  );
+  res.json(ins.rows[0]);
+});
+
 module.exports = router;
