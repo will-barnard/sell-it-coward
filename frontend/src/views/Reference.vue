@@ -9,8 +9,8 @@
           <td class="ref-price">$25</td>
         </tr>
         <tr>
-          <td class="ref-item">Additional pieces beyond 5 (per piece)</td>
-          <td class="ref-price">$5</td>
+          <td class="ref-item">Additional drum set pieces beyond 5</td>
+          <td class="ref-price">$5 (per piece)</td>
         </tr>
         <tr>
           <td class="ref-item">Snare, single drum, or cymbal <span class="ref-note">(hi-hat pairs count as one)</span></td>
