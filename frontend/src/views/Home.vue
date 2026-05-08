@@ -57,7 +57,7 @@ function money(v) {
       </thead>
       <tbody>
         <tr v-for="item in items" :key="item.id">
-          <td v-if="auth.isLoggedIn">{{ item.id }}</td>
+          <td v-if="auth.isLoggedIn">{{ item.consignor_id }} - {{ item.id }}</td>
           <td>{{ item.description }}</td>
           <td v-if="auth.isLoggedIn">
               <RouterLink :to="`/consignors/${item.consignor_id}`">{{ item.consignor_name }}</RouterLink>
