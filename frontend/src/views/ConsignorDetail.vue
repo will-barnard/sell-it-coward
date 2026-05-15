@@ -41,6 +41,9 @@ onMounted(load);
 const totalSold = computed(() =>
   items.value.reduce((s, i) => s + (i.sold_price != null ? Number(i.sold_price) : 0), 0)
 );
+const totalFees = computed(() =>
+  items.value.reduce((s, i) => s + Number(i.fee ?? 0), 0)
+);
 const totalPaidOut = computed(() =>
   payouts.value.reduce((s, p) => s + Number(p.amount), 0)
 );
@@ -138,6 +141,10 @@ function location(c) {
       <div class="summary-stat">
         <span class="summary-label">Total Sold</span>
         <span class="summary-value">{{ money(totalSold) }}</span>
+      </div>
+      <div class="summary-stat">
+        <span class="summary-label">Total Fees</span>
+        <span class="summary-value">{{ money(totalFees) }}</span>
       </div>
       <div class="summary-stat">
         <span class="summary-label">Paid Out</span>
